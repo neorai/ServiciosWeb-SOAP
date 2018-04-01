@@ -11,9 +11,16 @@ require_once 'Producto.php';
  * Description of DB
  *
  * @author root
+ * @version 1.0.0
  */
 class DB {
-    //put your code here
+    /**
+     * 
+     * @param string $sql
+     * @return object
+     * @throws PDOException
+     * @throws Exception
+     */
     protected static function ejecutaConsulta($sql) {
         $opc = array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8");
         $dsn = "mysql:host=192.168.1.90;dbname=tarea6";
@@ -38,6 +45,11 @@ class DB {
         return $resultado;
     }
     
+    /**
+     * 
+     * @param string $codProducto
+     * @return \Producto
+     */
     public static function obtienePVP($codProducto) {
         $codProductoLimpio = htmlspecialchars($codProducto, ENT_QUOTES, 'UTF-8');
         $sql = "SELECT PVP FROM producto";
@@ -56,6 +68,12 @@ class DB {
         return $pvp;
     }
     
+    /**
+     * 
+     * @param string $codProducto
+     * @param int $codTienda
+     * @return int
+     */
     public static function obtieneStock($codProducto, $codTienda) {
         $codProductoLimpio = htmlspecialchars($codProducto, ENT_QUOTES, 'UTF-8');
         $codTiendaLimpio = htmlspecialchars($codTienda, ENT_QUOTES, 'UTF-8');
@@ -72,6 +90,10 @@ class DB {
         return $stock;   
     }
     
+    /**
+     * 
+     * @return string[]
+     */
     public static function obtieneFamilias() {
         $sql = "SELECT cod FROM familia";
         $resultado = self::ejecutaConsulta ($sql);
@@ -85,6 +107,11 @@ class DB {
         return $familias; 
     }
     
+    /**
+     * 
+     * @param string $codFamilia
+     * @return string[]
+     */
     public static function obtieneCodProductos($codFamilia) {
         $codFamiliaLimpio = htmlspecialchars($codFamilia, ENT_QUOTES, 'UTF-8');
         $sql = "SELECT cod FROM producto ";

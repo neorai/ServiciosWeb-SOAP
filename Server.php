@@ -6,26 +6,51 @@
  * and open the template in the editor.
  */
 require_once 'DB.php';
-
+/**
+ * Clase Server
+ * 
+ * @author Robert Andrei Ioanes
+ * @version 1.0.0
+ * 
+ */
 
 class Server {
-    
-    function getPVP($codProducto){
+    /**
+     * 
+     * @param string $codProducto
+     * @return double
+     */
+    public function getPVP($codProducto){
         $product = DB::obtienePVP($codProducto);
         return $product->getPVP(); 
     }
-
-    function getStock($codProducto, $codTienda){ 
+    
+    /**
+     * 
+     * @param string $codProducto
+     * @param int $codTienda
+     * @return int
+     */
+    public function getStock($codProducto, $codTienda){ 
         $stock = DB::obtieneStock($codProducto, $codTienda);
         return $stock; 
     }
-
-    function getFamilias(){ 
+    
+    /**
+     * 
+     * @return string[]
+     */
+    public function getFamilias(){ 
         $familias = DB::obtieneFamilias();
         return $familias; 
     }   
-
-    function getProductosFamilia($codFamilia){
+    
+    /**
+     * 
+     * @param string $codFamilia
+     * @return string[]
+     */
+    public function getProductosFamilia($codFamilia){
         $codProductos = DB::obtieneCodProductos($codFamilia);
         return $codProductos; 
     }
