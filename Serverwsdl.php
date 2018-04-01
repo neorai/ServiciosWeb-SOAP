@@ -1,19 +1,10 @@
 <?php
-
 require_once 'DB.php';
-/**
- * Clase Server
- * 
- * @author Robert Andrei Ioanes
- * @version 1.0.0
- * 
- */
 
 class Server {
     /**
-     * 
-     * @param string $codProducto
-     * @return double
+     * @param string
+     * @return float
      */
     public function getPVP($codProducto){
         $product = DB::obtienePVP($codProducto);
@@ -21,10 +12,9 @@ class Server {
     }
     
     /**
-     * 
-     * @param string $codProducto
-     * @param int $codTienda
-     * @return int
+     * @param string
+     * @param integer
+     * @return integer
      */
     public function getStock($codProducto, $codTienda){ 
         $stock = DB::obtieneStock($codProducto, $codTienda);
@@ -32,7 +22,6 @@ class Server {
     }
     
     /**
-     * 
      * @return string[]
      */
     public function getFamilias(){ 
@@ -41,8 +30,7 @@ class Server {
     }   
     
     /**
-     * 
-     * @param string $codFamilia
+     * @param string
      * @return string[]
      */
     public function getProductosFamilia($codFamilia){

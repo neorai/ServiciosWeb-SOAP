@@ -6,7 +6,7 @@ class Producto {
     protected $descripcion;
     protected $PVP;
     protected $familia;
-    
+ 
     public function __construct($row) {
         $this->codigo = $row['cod'];
         $this->nombre = $row['nombre'];
@@ -23,11 +23,11 @@ class Producto {
     public function getNombre() {
         return $this->nombre;
     }
-
+ 
     public function getNombre_corto() {
         return $this->nombre_corto;
     }
-    
+
     public function getDescripcion() {
         return $this->descripcion;
     }
